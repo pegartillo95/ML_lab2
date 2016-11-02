@@ -96,7 +96,24 @@ fprintf(['For a student with scores 45 and 85, we predict an admission ' ...
          'probability of %f\n\n'], prob);
 
 % Compute accuracy on our training set
-p = predict(theta, X);
+p = function g = sigmoid(z)
+%SIGMOID Compute sigmoid functoon
+%   J = SIGMOID(z) computes the sigmoid of z.
+
+% You need to return the following variables correctly 
+g = zeros(size(z));
+
+% ====================== YOUR CODE HERE ======================
+% Instructions: Compute the sigmoid of each value of z (z can be a matrix,
+%               vector or scalar).
+
+g = 1./(1+exp(-z));
+
+
+
+% =============================================================
+
+end(theta, X);
 %p = 0;
 
 fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
