@@ -20,10 +20,8 @@ hold off;
 
 
 %% =========== Part 1: Regularized Logistic Regression ============
-% Add Polynomial Features
 
-% Note that mapFeature also adds a column of ones for us, so the intercept
-% term is handled
+% lambda = 1
 X = mapFeature(X(:,1), X(:,2));
 
 % Initialize fitting parameters
@@ -31,6 +29,42 @@ initial_theta = zeros(size(X, 2), 1);
 
 % Set regularization parameter lambda to 1
 lambda = 1;
+
+% Compute and display initial cost and gradient for regularized logistic
+% regression
+[cost, grad] = costFunctionReg(initial_theta, X, y, lambda);
+
+fprintf('Cost at initial theta (zeros): %f\n', cost);
+
+fprintf('\nProgram paused. Press enter to continue.\n');
+pause;
+
+% lambda = 0.5
+X = mapFeature(X(:,1), X(:,2));
+
+% Initialize fitting parameters
+initial_theta = zeros(size(X, 2), 1);
+
+% Set regularization parameter lambda to 1
+lambda = 0.5;
+
+% Compute and display initial cost and gradient for regularized logistic
+% regression
+[cost, grad] = costFunctionReg(initial_theta, X, y, lambda);
+
+fprintf('Cost at initial theta (zeros): %f\n', cost);
+
+fprintf('\nProgram paused. Press enter to continue.\n');
+pause;
+
+% lambda = 2
+X = mapFeature(X(:,1), X(:,2));
+
+% Initialize fitting parameters
+initial_theta = zeros(size(X, 2), 1);
+
+% Set regularization parameter lambda to 1
+lambda = 2;
 
 % Compute and display initial cost and gradient for regularized logistic
 % regression
@@ -72,4 +106,3 @@ hold off;
 p = predict(theta, X);
 
 fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
-
